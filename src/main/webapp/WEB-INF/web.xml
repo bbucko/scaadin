@@ -19,14 +19,14 @@
             <description>Vaadin application class to start</description>
             <param-name>application</param-name>
             <param-value>
-                pl.iogreen.scala.vaadin.application.ScalaApplication
+                pl.iogreen.scala.vaadin.application.ScaadinApplication
             </param-value>
         </init-param>
     </servlet>
 
     <servlet>
         <servlet-name>HelloScalatra</servlet-name>
-        <servlet-class>pl.iogreen.scala.scalatra.ScalatraExample</servlet-class>
+        <servlet-class>pl.iogreen.scala.scalatra.ServicesServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -36,6 +36,6 @@
 
     <servlet-mapping>
         <servlet-name>HelloScalatra</servlet-name>
-        <url-pattern>/services/*</url-pattern>
+        <url-pattern>/scaadin/services/*</url-pattern>
     </servlet-mapping>
 </web-app>
