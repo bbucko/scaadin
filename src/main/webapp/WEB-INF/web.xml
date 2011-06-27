@@ -6,36 +6,17 @@
          version="2.5">
     <display-name>scaadin</display-name>
 
-    <context-param>
-        <description>Vaadin production mode</description>
-        <param-name>productionMode</param-name>
-        <param-value>false</param-value>
-    </context-param>
+    <filter>
+        <filter-name>Scaadin Application</filter-name>
+        <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+    </filter>
 
-    <servlet>
-        <servlet-name>Scaadin Application</servlet-name>
-        <servlet-class>com.vaadin.terminal.gwt.server.ApplicationServlet</servlet-class>
-        <init-param>
-            <description>Vaadin application class to start</description>
-            <param-name>application</param-name>
-            <param-value>
-                pl.iogreen.scala.vaadin.application.ScaadinApplication
-            </param-value>
-        </init-param>
-    </servlet>
+    <listener>
+        <listener-class>pl.iogreen.scala.varia.ScaadinServletContext</listener-class>
+    </listener>
 
-    <servlet>
-        <servlet-name>HelloScalatra</servlet-name>
-        <servlet-class>pl.iogreen.scala.scalatra.ServicesServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Scaadin Application</servlet-name>
+    <filter-mapping>
+        <filter-name>Scaadin Application</filter-name>
         <url-pattern>/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>HelloScalatra</servlet-name>
-        <url-pattern>/scaadin/services/*</url-pattern>
-    </servlet-mapping>
+    </filter-mapping>
 </web-app>

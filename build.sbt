@@ -19,6 +19,8 @@ libraryDependencies ++= {
     val vaadinVersion = "6.6.2"
     val liftwebVersion = "2.4-SNAPSHOT"
     val cashbahVersion = "2.1.5.0"
+    val guiceVersion = "3.0"
+    val subcutVersion = "0.8"
     Seq(
         "org.scalatra" %% "scalatra" % scalatraVersion withSources(),
         "net.liftweb" %% "lift-json" % liftwebVersion withSources(),
@@ -26,6 +28,9 @@ libraryDependencies ++= {
         "com.mongodb.casbah" %% "casbah-core" % cashbahVersion withSources(),
         "com.mongodb.casbah" %% "casbah-commons" % cashbahVersion withSources(),
         "com.mongodb.casbah" %% "casbah-query" % cashbahVersion withSources(),
+        "com.google.inject" % "guice" % guiceVersion withSources(),
+        "com.google.inject.extensions" % "guice-servlet" % guiceVersion withSources(),
+        //"org.scala-tools" %% "subcut" % subcutVersion withSources(),
         "org.eclipse.jetty" % "jetty-webapp" % "7.3.0.v20110203" % "jetty",
         "javax.servlet" % "servlet-api" % "2.5" % "provided->default",
         "junit" % "junit" % "4.5" % "test->default"
