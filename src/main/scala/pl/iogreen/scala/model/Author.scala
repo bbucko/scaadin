@@ -1,7 +1,12 @@
 package pl.iogreen.scala.model
 
-/**
-  * @author Błażej Bucko
-  */
+import reflect.BeanProperty
 
-case class Author(name: String)
+/**
+ * @author Błażej Bucko
+ */
+
+class Author {
+  @BeanProperty var name: String = ""
+  @BeanProperty var surName: String = ""
+}
