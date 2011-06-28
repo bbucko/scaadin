@@ -10,10 +10,8 @@ import com.google.inject.name.Named
 @Singleton
 class BookService {
 
-  println("book service is created")
-
-  def makeSomething() {
-    println("something")
+  def makeSomething(someText: String) {
+    println("something " + someText)
   }
 
 }

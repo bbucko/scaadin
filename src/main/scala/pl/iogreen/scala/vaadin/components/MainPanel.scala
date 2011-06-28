@@ -10,11 +10,13 @@ import pl.iogreen.scala.services.BookService
  * @author Błażej Bucko
  */
 
-class SpecialPanel extends Panel {
+class MainPanel extends Panel {
 
   @Inject val bookService: BookService = null
 
   override def attach() {
+    super.attach()
+
     val author = new Author("", "")
     val beanItem = new BeanItem[Author](author)
 
@@ -31,6 +33,8 @@ class SpecialPanel extends Panel {
       if (form.isValid) {
         form.commit()
         getWindow.showNotification("BB: " + beanItem.getBean.name + " :: " + beanItem.getBean.surName, Window.Notification.TYPE_HUMANIZED_MESSAGE)
+        getWindow.addComponent(new SecondPanel)
+        bookService.makeSomething("special panel")
       }
     }))
     layout.setSpacing(true)
