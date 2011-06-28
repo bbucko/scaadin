@@ -6,23 +6,19 @@ import com.google.inject.servlet.{ServletScopes, ServletModule, GuiceServletCont
 import pl.iogreen.scala.scalatra.ServicesServlet
 import pl.iogreen.scala.services.BookService
 import com.google.inject.Guice
-
 /**
  * @author Błażej Bucko
  */
 
 class ScaadinServletContext extends GuiceServletContextListener {
 
-  def getInjector = Guice.createInjector(new ScaadinModule);
-}
+  def getInjector = Guice.createInjector(new ServletModule {
+    override def configureServlets() {
+      serve("/services/*").`with`(classOf[ServicesServlet])
+      serve("/*").`with`(classOf[ScaadinApplicationServlet])
 
-private class ScaadinModule extends ServletModule {
-  override def configureServlets() {
-    serve("/services/*").`with`(classOf[ServicesServlet])
-    serve("/*").`with`(classOf[ScaadinApplicationServlet])
-
-    bind[Application](classOf[Application]).to(classOf[ScaadinApplication]).in(ServletScopes.SESSION)
-    bind[BookService](classOf[BookService])
-
-  }
+      bind[Application](classOf[Application]).to(classOf[ScaadinApplication]).in(ServletScopes.SESSION)
+      bind[BookService](classOf[BookService])
+    }
+  });
 }

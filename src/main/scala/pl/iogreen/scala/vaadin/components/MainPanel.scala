@@ -3,8 +3,8 @@ package pl.iogreen.scala.vaadin.components
 import pl.iogreen.scala.model.Author
 import com.vaadin.data.util.BeanItem
 import com.vaadin.ui._
-import com.google.inject.Inject
 import pl.iogreen.scala.services.BookService
+import com.google.inject.{Injector, Inject}
 
 /**
  * @author Błażej Bucko
@@ -13,6 +13,7 @@ import pl.iogreen.scala.services.BookService
 class MainPanel extends Panel {
 
   @Inject val bookService: BookService = null
+  @Inject val injector: Injector = null
 
   override def attach() {
     super.attach()
@@ -26,22 +27,26 @@ class MainPanel extends Panel {
     form.getField("surName").setRequired(true)
     form.getField("name").setRequired(true)
 
-    addComponent(form)
+    val secondPanel: SecondPanel = new SecondPanel
+    secondPanel.setVisible(false)
 
     val layout = new HorizontalLayout();
     layout.addComponent(new SpecialButton("Commit?", _ => {
       if (form.isValid) {
         form.commit()
-        getWindow.showNotification("BB: " + beanItem.getBean.name + " :: " + beanItem.getBean.surName, Window.Notification.TYPE_HUMANIZED_MESSAGE)
-        getWindow.addComponent(new SecondPanel)
-        bookService.makeSomething("special panel")
       }
+      bookService.makeSomething("special panel")
     }))
     layout.setSpacing(true)
     layout.addComponent(new SpecialButton("Cancel?", _ => {
+      secondPanel.setVisible(true)
       form.discard()
     }))
 
+    addComponent(form)
     addComponent(layout)
+    addComponent(secondPanel)
+
+    injector.injectMembers(secondPanel)
   }
 }

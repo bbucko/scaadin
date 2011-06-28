@@ -8,7 +8,7 @@ import com.google.inject.{Injector, Inject}
  * @author Błażej Bucko
  */
 
-class SecondPanel extends Panel {
+class SecondPanelToBeInjected extends Panel {
 
   @Inject val bookService: BookService = null
   @Inject val injector: Injector = null
@@ -16,7 +16,7 @@ class SecondPanel extends Panel {
   override def attach() {
     super.attach()
 
-    val button = new SpecialButton("Click me", _ => bookService.makeSomething("second panel"))
+    val button = new SpecialButton("Drink me", _ => bookService.makeSomething("second panel to be injected"))
     addComponent(button)
   }
 
