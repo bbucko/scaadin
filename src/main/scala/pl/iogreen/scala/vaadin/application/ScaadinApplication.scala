@@ -2,8 +2,8 @@ package pl.iogreen.scala.vaadin.application
 
 import com.vaadin.Application
 import pl.iogreen.scala.vaadin.components.SpecialPanel
-import com.google.inject.Inject
-import com.vaadin.ui.{Panel, Window}
+import com.vaadin.ui.Window
+import com.google.inject.{Injector, Inject}
 
 /**
  * @author Błażej Bucko
@@ -11,15 +11,15 @@ import com.vaadin.ui.{Panel, Window}
 
 class ScaadinApplication extends Application {
 
+  @Inject val injector: Injector = null
+
   def init() {
     val panel = new SpecialPanel();
+    injector.injectMembers(panel)
+
     val mainWindow = new Window("ScaadinApp!")
     mainWindow.addComponent(panel)
 
     setMainWindow(mainWindow)
-  }
-
-  def terminalError() {
-    println("error")
   }
 }

@@ -1,12 +1,11 @@
 package pl.iogreen.scala.varia
 
-import com.google.inject.Guice
 import com.vaadin.Application
 import pl.iogreen.scala.vaadin.application.ScaadinApplication
 import com.google.inject.servlet.{ServletScopes, ServletModule, GuiceServletContextListener}
 import pl.iogreen.scala.scalatra.ServicesServlet
-import com.google.inject.name.Names
 import pl.iogreen.scala.services.BookService
+import com.google.inject.Guice
 
 /**
  * @author Błażej Bucko
@@ -25,6 +24,5 @@ private class ScaadinModule extends ServletModule {
     bind[Application](classOf[Application]).to(classOf[ScaadinApplication]).in(ServletScopes.SESSION)
     bind[BookService](classOf[BookService])
 
-    bindConstant().annotatedWith(Names.named("bookService")).to(classOf[BookService])
   }
 }

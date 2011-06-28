@@ -1,6 +1,7 @@
 package pl.iogreen.scala.services
 
 import com.google.inject.Singleton
+import com.google.inject.name.Named
 
 /**
  * @author Błażej Bucko
@@ -9,7 +10,7 @@ import com.google.inject.Singleton
 @Singleton
 class BookService {
 
-  println("BookService created")
+  println("book service is created")
 
   def makeSomething() {
     println("something")

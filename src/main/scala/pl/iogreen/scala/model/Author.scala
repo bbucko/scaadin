@@ -6,7 +6,4 @@ import reflect.BeanProperty
  * @author Błażej Bucko
  */
 
-class Author {
-  @BeanProperty var name: String = ""
-  @BeanProperty var surName: String = ""
-}
+case class Author(@BeanProperty var name: String, @BeanProperty var surName: String)
