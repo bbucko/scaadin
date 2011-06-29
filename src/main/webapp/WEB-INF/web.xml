@@ -12,7 +12,7 @@
     </filter>
 
     <listener>
-        <listener-class>pl.iogreen.scala.varia.ScaadinServletContext</listener-class>
+        <listener-class>pl.iogreen.scala.vaadin.ScaadinServletContext</listener-class>
     </listener>
 
     <filter-mapping>

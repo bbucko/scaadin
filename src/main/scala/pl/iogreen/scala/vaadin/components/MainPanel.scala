@@ -4,7 +4,8 @@ import pl.iogreen.scala.model.Author
 import com.vaadin.data.util.BeanItem
 import com.vaadin.ui._
 import pl.iogreen.scala.services.BookService
-import com.google.inject.{Injector, Inject}
+import com.google.inject.Inject
+import pl.iogreen.scala.guice.ServiceInjector
 
 /**
  * @author Błażej Bucko
@@ -13,7 +14,6 @@ import com.google.inject.{Injector, Inject}
 class MainPanel extends Panel {
 
   @Inject val bookService: BookService = null
-  @Inject val injector: Injector = null
 
   override def attach() {
     super.attach()
@@ -27,7 +27,7 @@ class MainPanel extends Panel {
     form.getField("surName").setRequired(true)
     form.getField("name").setRequired(true)
 
-    val secondPanel: SecondPanel = new SecondPanel
+    val secondPanel: SecondPanel = new SecondPanel with ServiceInjector
     secondPanel.setVisible(false)
 
     val layout = new HorizontalLayout();
@@ -46,7 +46,5 @@ class MainPanel extends Panel {
     addComponent(form)
     addComponent(layout)
     addComponent(secondPanel)
-
-    injector.injectMembers(secondPanel)
   }
 }

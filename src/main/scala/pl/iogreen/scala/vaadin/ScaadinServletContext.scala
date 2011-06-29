@@ -1,11 +1,12 @@
-package pl.iogreen.scala.varia
+package pl.iogreen.scala.vaadin
 
 import com.vaadin.Application
 import pl.iogreen.scala.vaadin.application.ScaadinApplication
 import com.google.inject.servlet.{ServletScopes, ServletModule, GuiceServletContextListener}
 import pl.iogreen.scala.scalatra.ServicesServlet
-import pl.iogreen.scala.services.BookService
 import com.google.inject.Guice
+import pl.iogreen.scala.guice.ScaadinApplicationServlet
+
 /**
  * @author Błażej Bucko
  */
@@ -18,7 +19,6 @@ class ScaadinServletContext extends GuiceServletContextListener {
       serve("/*").`with`(classOf[ScaadinApplicationServlet])
 
       bind[Application](classOf[Application]).to(classOf[ScaadinApplication]).in(ServletScopes.SESSION)
-      bind[BookService](classOf[BookService])
     }
   });
 }

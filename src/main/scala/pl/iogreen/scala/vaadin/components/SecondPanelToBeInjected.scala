@@ -2,7 +2,7 @@ package pl.iogreen.scala.vaadin.components
 
 import pl.iogreen.scala.services.BookService
 import com.vaadin.ui._
-import com.google.inject.{Injector, Inject}
+import com.google.inject.Inject
 
 /**
  * @author Błażej Bucko
@@ -11,7 +11,6 @@ import com.google.inject.{Injector, Inject}
 class SecondPanelToBeInjected extends Panel {
 
   @Inject val bookService: BookService = null
-  @Inject val injector: Injector = null
 
   override def attach() {
     super.attach()

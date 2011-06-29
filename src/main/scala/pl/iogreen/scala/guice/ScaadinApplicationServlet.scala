@@ -1,4 +1,4 @@
-package pl.iogreen.scala.varia
+package pl.iogreen.scala.guice
 
 import com.vaadin.terminal.gwt.server.AbstractApplicationServlet
 import javax.servlet.http.HttpServletRequest
